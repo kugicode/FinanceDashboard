@@ -33,8 +33,15 @@ function App() {
     setAmount(0);
   }
 
-  const remove = (id) => {
-    setTransactions(transactions.filter(item => item.id != id))
+  const remove = (id, type, amount) => {
+    setTransactions(transactions.filter(item => item.id !== id));
+    if(type === 'income'){
+      setIncome(income - amount);
+    }
+
+    if(type === 'expense'){
+      setExpenses(expenses - amount);
+    }
   }
 
   return (
@@ -49,10 +56,11 @@ function App() {
       
       <ul>
         {transactions.map(item => 
-          <li key={item.id}>{item.type} - {item.amount} <button onClick={() => remove(item.id)}>delete</button></li>
+          <li key={item.id}>{item.type} - {item.amount} <button onClick={() => remove(item.id, item.type, item.amount)}>delete</button></li>
         )}
       </ul>
-      
+      <p>Transactions: {transactions.length}</p>
+      <p>Expenses: {transactions.filter(item => item.type === 'expense').length}</p>
     </div>
   )
 }
