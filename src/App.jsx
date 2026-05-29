@@ -9,6 +9,10 @@ function App() {
   const [amount, setAmount] = useState(0);
   const [transactions, setTransactions] = useState([]);
 
+  const filtered = transactions.filter(item => item.type === "income");
+
+  filtered.reduce((acc, cur) => acc + cur.amount, 0);
+
   const balance = income - expenses;
 
   const handleAddIncome = () => {
@@ -60,6 +64,7 @@ function App() {
         )}
       </ul>
       <p>Transactions: {transactions.length}</p>
+      <p>Income: {transactions.filter(item => item.type === 'income').length}</p>
       <p>Expenses: {transactions.filter(item => item.type === 'expense').length}</p>
     </div>
   )
