@@ -15,7 +15,7 @@ function App() {
 
   const totalExpenses = filteredExpenses.reduce((acc, cur) => acc + cur.amount, 0);
 
-  const balance = totalIncome - totalExpenses
+  const balance = totalIncome - totalExpenses;
 
   const handleAddIncome = () => {
     if(amount <= 0){ return}
@@ -41,6 +41,10 @@ function App() {
     setTransactions(transactions.filter(item => item.id !== id));
   }
 
+  const clear = () => {
+  setTransactions([]);
+  }
+
   useEffect(() => {
   const savedItem = JSON.parse(localStorage.getItem('transaction'));
   if(savedItem){
@@ -54,6 +58,17 @@ function App() {
     localStorage.setItem('transaction', JSON.stringify(transactions));
       }
   },[transactions, load]);
+
+  useEffect(() => {
+    const savedAmount = JSON.parse(localStorage.getItem('amount'));
+    if(savedAmount){
+    setAmount(savedAmount);
+    }
+  },[])
+
+   useEffect(() => {
+    localStorage.setItem('amount', JSON.stringify(amount));
+  },[amount])
 
   return (
     <div>
@@ -73,6 +88,7 @@ function App() {
       <p>Transactions: {transactions.length}</p>
       <p>Income: {transactions.filter(item => item.type === 'income').length}</p>
       <p>Expenses: {transactions.filter(item => item.type === 'expense').length}</p>
+      <button onClick={clear}>Clear All</button>
     </div>
   )
 }
