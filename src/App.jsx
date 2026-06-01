@@ -42,7 +42,9 @@ function App() {
   }
 
   const clear = () => {
+    if (confirm("Are you sure?")){    
   setTransactions([]);
+    }
   }
 
   useEffect(() => {
