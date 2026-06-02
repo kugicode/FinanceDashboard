@@ -83,10 +83,16 @@ function App() {
       <button onClick={handleAddExpense}>Add expense</button>
       
       <ul>
-        {transactions.map(item => 
-          <li key={item.id}>{item.type} - {item.amount} <button onClick={() => remove(item.id)}>delete</button></li>
-        )}
+        
+        {transactions.length > 0 
+        ?  
+        transactions.map((item, index) => 
+         <li key={item.id}>{index + 1}. {item.type} - {item.amount} <button onClick={() => remove(item.id)}>delete</button></li>
+        )
+      : <li>No transactions here!</li>
+      }
       </ul>
+
       <p>Transactions: {transactions.length}</p>
       <p>Income: {transactions.filter(item => item.type === 'income').length}</p>
       <p>Expenses: {transactions.filter(item => item.type === 'expense').length}</p>
