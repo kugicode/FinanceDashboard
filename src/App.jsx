@@ -87,7 +87,7 @@ function App() {
         {transactions.length > 0 
         ?  
         transactions.map((item, index) => 
-         <li key={item.id}>{index + 1}. {item.type} - {item.amount} <button onClick={() => remove(item.id)}>delete</button></li>
+         <li style={item.type === 'income' ? {color:'green'} : {color:'red'}} key={item.id}>{index + 1}. {item.type} - {item.amount} <button onClick={() => remove(item.id)}>delete</button></li>
         )
       : <li>No transactions here!</li>
       }
@@ -96,6 +96,7 @@ function App() {
       <p>Transactions: {transactions.length}</p>
       <p>Income: {transactions.filter(item => item.type === 'income').length}</p>
       <p>Expenses: {transactions.filter(item => item.type === 'expense').length}</p>
+      <p>Total money moved: {totalIncome + totalExpenses}</p>
       <button onClick={clear}>Clear All</button>
     </div>
   )
