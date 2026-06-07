@@ -22,7 +22,8 @@ function App() {
     setTransactions([...transactions, {
       id: Date.now(),
       type: "income",
-      amount: amount
+      amount: amount,
+      date: new Date().toLocaleDateString()
     }]);
     setAmount(0);
   }
@@ -32,7 +33,8 @@ function App() {
     setTransactions([...transactions, {
       id: Date.now(),
       type: "expense",
-      amount: amount
+      amount: amount,
+      date: new Date().toLocaleDateString()
     }]);
     setAmount(0);
   }
@@ -87,7 +89,9 @@ function App() {
         {transactions.length > 0 
         ?  
         transactions.map((item, index) => 
-         <li style={item.type === 'income' ? {color:'green'} : {color:'red'}} key={item.id}>{index + 1}. {item.type} - {item.amount} <button onClick={() => remove(item.id)}>delete</button></li>
+         <li style={item.type === 'income' ? {color:'green'} : {color:'red'}} 
+        key={item.id}>{index + 1}. {item.type} - {item.amount} {item.date}
+        <button onClick={() => remove(item.id)}>delete</button></li>
         )
       : <li>No transactions here!</li>
       }
