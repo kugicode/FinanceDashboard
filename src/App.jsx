@@ -75,14 +75,16 @@ function App() {
   },[amount])
 
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       <Navbar />
+      <div style={{ display: 'flex', gap: 30, justifyContent: 'center' }}>
       <Card title="Total Balance" amount={balance} />
       <Card title="Income" amount={totalIncome} />
       <Card title="Expenses" amount={totalExpenses} />
+      </div>
       <input type="number" placeholder='Enter an amount' value={amount} onChange={(e) => setAmount(Number(e.target.value)) } />
-      <button onClick={handleAddIncome}>Add income</button>
-      <button onClick={handleAddExpense}>Add expense</button>
+      <button onClick={handleAddIncome} style={{margin: 5, border: 'none', borderRadius: '5px', padding: 5, background: 'lightgreen' }}>Add income</button>
+      <button onClick={handleAddExpense} style={{ border: 'none', borderRadius: '5px', padding: 5, background: '#ff785d' }}>Add expense</button>
       
       <ul>
         
@@ -91,7 +93,7 @@ function App() {
         transactions.map((item, index) => 
          <li style={item.type === 'income' ? {color:'green'} : {color:'red'}} 
         key={item.id}>{index + 1}. {item.type} - {item.amount} {item.date}
-        <button onClick={() => remove(item.id)}>delete</button></li>
+        <button onClick={() => remove(item.id)} style={{ margin: 5, border: 'none', borderRadius: '5px', padding: 3, background: '#ff5837'}}>delete</button></li>
         )
       : <li>No transactions here!</li>
       }
