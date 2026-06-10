@@ -86,13 +86,16 @@ function App() {
       <button onClick={handleAddIncome} style={{margin: 5, border: 'none', borderRadius: '5px', padding: 5, background: 'lightgreen' }}>Add income</button>
       <button onClick={handleAddExpense} style={{ border: 'none', borderRadius: '5px', padding: 5, background: '#ff785d' }}>Add expense</button>
       
-      <ul style={{ display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+      <ul style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', listStyle: 'none'}}>
         
         {transactions.length > 0 
         ?  
         transactions.map((item, index) => 
-         <li style={item.type === 'income' ? {color:'green',width: 300,background: '#d7ffd7', padding: 4, borderRadius: 6, margin: 10} : {color:'red', width: 300, background: '#ffd5cd', padding: 4, borderRadius: 6, margin: 10}} 
-        key={item.id}>{index + 1}. {item.type} {item.amount} {item.date}
+         <li style={item.type === 'income' ? {display:'flex', justifyContent: 'space-between', alignItems:'center' ,color:'green',width: 300,background: '#d7ffd7', padding: 4, borderRadius: 6, margin: 10} : {display:'flex', justifyContent: 'space-between', alignItems:'center', color:'red', width: 300, background: '#ffd5cd', padding: 4, borderRadius: 6, margin: 10}} 
+        key={item.id}>
+          <span>{index + 1}. {item.type} </span>
+         <span>{item.amount} </span>
+          <span>{item.date}</span>
         <button onClick={() => remove(item.id)} style={{ margin: 5, border: 'none', borderRadius: '5px', padding: 3, background: '#ff5837'}}>delete</button></li>
         )
       : <li>No transactions here!</li>
