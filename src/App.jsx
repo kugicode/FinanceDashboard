@@ -94,19 +94,20 @@ function App() {
          <li style={item.type === 'income' ? {display:'flex', justifyContent: 'space-between', alignItems:'center' ,color:'green',width: 300,background: '#d7ffd7', padding: 4, borderRadius: 6, margin: 10} : {display:'flex', justifyContent: 'space-between', alignItems:'center', color:'red', width: 300, background: '#ffd5cd', padding: 4, borderRadius: 6, margin: 10}} 
         key={item.id}>
           <span>{index + 1}. {item.type} </span>
-         <span>{item.amount} </span>
+         <span>£{item.amount} </span>
           <span>{item.date}</span>
         <button onClick={() => remove(item.id)} style={{ margin: 5, border: 'none', borderRadius: '5px', padding: 3, background: '#ff5837'}}>delete</button></li>
         )
       : <li>No transactions here!</li>
       }
       </ul>
-
+      <div style={{ background: 'lightgrey', borderRadius: 6, padding: 6, display:'inline-block' }}>
       <p>Transactions: {transactions.length}</p>
       <p>Income: {transactions.filter(item => item.type === 'income').length}</p>
       <p>Expenses: {transactions.filter(item => item.type === 'expense').length}</p>
       <p>Total money moved: {totalIncome + totalExpenses}</p>
-      <button onClick={clear}>Clear All</button>
+      <button style={{ border: 'none', padding: 5, borderRadius: 6, background:'#ff5837', margin: 6 }} onClick={clear}>Clear All</button>
+      </div>
     </div>
   )
 }
