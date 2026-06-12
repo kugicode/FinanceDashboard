@@ -101,11 +101,23 @@ function App() {
       : <li>No transactions here!</li>
       }
       </ul>
-      <div style={{ background: 'lightgrey', borderRadius: 6, padding: 6, display:'inline-block' }}>
-      <p>Transactions: {transactions.length}</p>
-      <p>Income: {transactions.filter(item => item.type === 'income').length}</p>
-      <p>Expenses: {transactions.filter(item => item.type === 'expense').length}</p>
-      <p>Total money moved: {totalIncome + totalExpenses}</p>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+        <div style={{background: 'lightgrey', borderRadius: 6,  margin: 5, padding: 10}}>
+          <p>Transactions:</p> 
+          <h4>{transactions.length}</h4></div>
+      <div style={{background: 'lightgrey', borderRadius: 6,  margin: 5, padding: 10}}>
+        <p>Income:</p>
+          <h4>{transactions.filter(item => item.type === 'income').length}</h4>
+          </div>
+      
+      <div style={{background: 'lightgrey', borderRadius: 6,  margin: 5, padding: 10}}>
+        <p>Expenses:</p> 
+      <h4>{transactions.filter(item => item.type === 'expense').length}</h4>
+      </div>
+      <div style={{background: 'lightgrey', borderRadius: 6,  margin: 5, padding: 10}}>
+        <p>Total money moved:</p> 
+        <h4>{totalIncome + totalExpenses}</h4>
+      </div>
       <button style={{ border: 'none', padding: 5, borderRadius: 6, background:'#ff5837', margin: 6 }} onClick={clear}>Clear All</button>
       </div>
     </div>
