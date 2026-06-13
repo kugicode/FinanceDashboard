@@ -86,6 +86,10 @@ function App() {
       <button onClick={handleAddIncome} style={{margin: 5, border: 'none', borderRadius: '5px', padding: 5, background: 'lightgreen' }}>Add income</button>
       <button onClick={handleAddExpense} style={{ border: 'none', borderRadius: '5px', padding: 5, background: '#ff785d' }}>Add expense</button>
       
+      <h2 style={{ marginTop: 20, fontFamily: 'Poppins' }}>
+        Recent Transactions
+        </h2>
+
       <ul style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', listStyle: 'none'}}>
         
         {transactions.length > 0 
